@@ -2,6 +2,23 @@ class BidsController < ApplicationController
   
   before_filter :authenticate_user!, :except => [:show, :index]
   
+  # PUT /bids/join/1
+  # PUT /bids/join/1.json
+  def join
+    @bid = Bid.find(params[:id])
+    @bid.title = "Joined"
+
+    respond_to do |format|
+      if @bid.update_attributes(params[:bid])
+        format.html { redirect_to @bid, notice: 'You joined the Bid successfully.' }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @bid.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   # GET /bids
   # GET /bids.json
   def index
@@ -43,10 +60,8 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
-    # @bid = Bid.new(params[:bid])
     @bid = current_user.bid.build(params[:bid])
-    
-    
+        
     respond_to do |format|
       if @bid.save
         format.html { redirect_to @bid, notice: 'Bid was successfully created.' }
