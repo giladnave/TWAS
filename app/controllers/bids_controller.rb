@@ -1,4 +1,7 @@
 class BidsController < ApplicationController
+  
+  before_filter :authenticate_user!, :except => [:show, :index]
+  
   # GET /bids
   # GET /bids.json
   def index
@@ -24,8 +27,8 @@ class BidsController < ApplicationController
   # GET /bids/new
   # GET /bids/new.json
   def new
-    @bid = Bid.new
-
+    @bid = current_user.bid.build
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @bid }
@@ -40,8 +43,10 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
-    @bid = Bid.new(params[:bid])
-
+    # @bid = Bid.new(params[:bid])
+    @bid = current_user.bid.build(params[:bid])
+    
+    
     respond_to do |format|
       if @bid.save
         format.html { redirect_to @bid, notice: 'Bid was successfully created.' }

@@ -6,6 +6,7 @@
     <th>Content</th>
     <th>Join num</th>
     <th>Valid until</th>
+    <th>Initiator ID</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= bid.content %></td>
     <td><%= bid.join_num %></td>
     <td><%= bid.valid_until %></td>
+    <td><%= bid.user_id %></td>
     <td><%= link_to 'Show', bid %></td>
     <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
     <td><%= link_to 'Destroy', bid, confirm: 'Are you sure?', method: :delete %></td>
