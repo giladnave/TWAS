@@ -1,4 +1,6 @@
 TWAS::Application.routes.draw do
+  devise_for :users
+
   resources :bids
 
   get "home/index"
