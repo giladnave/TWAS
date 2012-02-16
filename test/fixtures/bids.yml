@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  content: MyText
+  join_num: 1
+  valid_until: 2012-02-16
+
+two:
+  title: MyString
+  content: MyText
+  join_num: 1
+  valid_until: 2012-02-16

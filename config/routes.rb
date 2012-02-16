@@ -1,4 +1,6 @@
 TWAS::Application.routes.draw do
+  resources :bids
+
   get "home/index"
 
   # You can have the root of your site routed with "root"
