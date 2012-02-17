@@ -63,6 +63,12 @@ class BidsController < ApplicationController
   # GET /bids/1/edit
   def edit
     @bid = Bid.find(params[:id])
+    respond_to do |format|
+      if @bid.user_id != current_user.id
+        format.html { redirect_to @bid, notice: 'You can not edit a bid of other owner !' }
+        format.json { render json: @bid.errors, status: :edit_prohibited }
+      end
+    end
   end
 
   # POST /bids
@@ -87,13 +93,15 @@ class BidsController < ApplicationController
     @bid = Bid.find(params[:id])
 
     respond_to do |format|
-      if @bid.update_attributes(params[:bid])
-        format.html { redirect_to @bid, notice: 'Bid was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
-      end
+      
+        if @bid.update_attributes(params[:bid])
+          format.html { redirect_to @bid, notice: 'Bid was successfully updated.' }
+          format.json { head :ok }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @bid.errors, status: :unprocessable_entity }
+        end
+      
     end
   end
 
@@ -101,11 +109,17 @@ class BidsController < ApplicationController
   # DELETE /bids/1.json
   def destroy
     @bid = Bid.find(params[:id])
-    @bid.destroy
-
+    
     respond_to do |format|
-      format.html { redirect_to bids_url }
-      format.json { head :ok }
+      if @bid.user_id != current_user.id
+        format.html { redirect_to @bid, notice: 'You can not delete a bid of other owner !' }
+        format.json { render json: @bid.errors, status: :destroy_prohibited }
+      else
+        @bid.destroy
+      
+        format.html { redirect_to bids_url }
+        format.json { head :ok }
+      end
     end
   end
 end
