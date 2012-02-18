@@ -63,8 +63,9 @@ class BidsController < ApplicationController
   # GET /bids/1/edit
   def edit
     @bid = Bid.find(params[:id])
-    respond_to do |format|
-      if @bid.user_id != current_user.id
+    
+    if @bid.user_id != current_user.id
+      respond_to do |format|
         format.html { redirect_to @bid, notice: 'You can not edit a bid of other owner !' }
         format.json { render json: @bid.errors, status: :edit_prohibited }
       end
