@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   
-  has_many :bid, :dependent => :destroy
-  accepts_nested_attributes_for :bid
+  has_many :bids, :dependent => :destroy
+  accepts_nested_attributes_for :bids
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

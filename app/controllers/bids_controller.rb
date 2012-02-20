@@ -8,23 +8,29 @@ class BidsController < ApplicationController
     @bid = Bid.find(params[:id])
     # @bid.title = "Joined"
 
-    respond_to do |format|
-      if @bid.user_id == current_user.id
+    
+    if @bid.user_id == current_user.id
+      respond_to do |format|
         format.html { redirect_to @bid, notice: 'You can not join your own Bid !' }
         format.json { render json: @bid.errors, status: :owner_join_prohibited }
-      else
-        # update the bid with the joined user
-        @bid.join_count = @bid.join_count + 1
-         
-        if @bid.update_attributes(params[:bid])
+      end
+    else
+      # update the bid with the joined user
+      @bid.join_count = @bid.join_count + 1
+       
+      if @bid.update_attributes(params[:bid])
+        respond_to do |format|
           format.html { redirect_to @bid, notice: 'You joined the Bid successfully.' }
           format.json { head :ok }
-        else
+        end
+      else
+        respond_to do |format|
           format.html { render action: "edit" }
           format.json { render json: @bid.errors, status: :unprocessable_entity }
         end
       end
     end
+    
   end
   
   # GET /bids
@@ -52,7 +58,7 @@ class BidsController < ApplicationController
   # GET /bids/new
   # GET /bids/new.json
   def new
-    @bid = current_user.bid.build
+    @bid = current_user.bids.build
     
     respond_to do |format|
       format.html # new.html.erb
@@ -75,7 +81,7 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
-    @bid = current_user.bid.build(params[:bid])
+    @bid = current_user.bids.build(params[:bid])
         
     respond_to do |format|
       if @bid.save
