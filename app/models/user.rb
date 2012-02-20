@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   
   has_many :bids, :dependent => :destroy
+
+  has_many :joinerships, :through => :bids
+  
   accepts_nested_attributes_for :bids
   
   # Include default devise modules. Others available are:

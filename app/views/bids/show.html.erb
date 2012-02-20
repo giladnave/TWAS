@@ -22,7 +22,7 @@
 
 <p>
   <b>Joiners count:</b>
-  <%= @bid.join_count %>
+  <%= @bid.joinerships.count %>
 </p>
 
 <p>
@@ -32,7 +32,19 @@
 
 <p>
   <b>Link to Join:</b>
-  <%= link_to 'Join Me', join_bid_path(@bid) %>
+  <%= link_to 'Join Me', joinerships_path(:bid_id => @bid), :method => :post %>
+  <%#= link_to 'Join Me', join_bid_path(@bid) %>
+</p>
+
+<p>
+<b>Joiners</b>
+<ul>
+  <% for joiner in @bid.joiners %>
+    <li>
+      <%=h joiner.email %>
+    </li>
+  <% end %>
+</ul>
 </p>
 
 <%= link_to 'Edit', edit_bid_path(@bid) %> |

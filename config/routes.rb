@@ -1,15 +1,14 @@
 TWAS::Application.routes.draw do
   devise_for :users
 
-  resources :bids do
-    member do
-      get 'join'
-    end
-  end
-  
-  #match "/bids/:id/join" => "bids#join"
-  # match 'bids/join', :controller => 'bids', :action => 'join', :as => 'join'
+  resources :bids  #do
+    # member do
+      # get 'join'
+    # end
+  # end
 
+  resources :joinerships
+  
   get "home/index"
   
   

@@ -4,34 +4,34 @@ class BidsController < ApplicationController
   
   # PUT /bids/join/1
   # PUT /bids/join/1.json
-  def join
-    @bid = Bid.find(params[:id])
-    # @bid.title = "Joined"
-
-    
-    if @bid.user_id == current_user.id
-      respond_to do |format|
-        format.html { redirect_to @bid, notice: 'You can not join your own Bid !' }
-        format.json { render json: @bid.errors, status: :owner_join_prohibited }
-      end
-    else
-      # update the bid with the joined user
-      @bid.join_count = @bid.join_count + 1
-       
-      if @bid.update_attributes(params[:bid])
-        respond_to do |format|
-          format.html { redirect_to @bid, notice: 'You joined the Bid successfully.' }
-          format.json { head :ok }
-        end
-      else
-        respond_to do |format|
-          format.html { render action: "edit" }
-          format.json { render json: @bid.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-    
-  end
+  # def join
+    # @bid = Bid.find(params[:id])
+    # # @bid.title = "Joined"
+# 
+#     
+    # if @bid.user_id == current_user.id
+      # respond_to do |format|
+        # format.html { redirect_to @bid, notice: 'You can not join your own Bid !' }
+        # format.json { render json: @bid.errors, status: :owner_join_prohibited }
+      # end
+    # else
+      # # update the bid with the joined user
+      # @bid.join_count = @bid.join_count + 1
+#        
+      # if @bid.update_attributes(params[:bid])
+        # respond_to do |format|
+          # format.html { redirect_to @bid, notice: 'You joined the Bid successfully.' }
+          # format.json { head :ok }
+        # end
+      # else
+        # respond_to do |format|
+          # format.html { render action: "edit" }
+          # format.json { render json: @bid.errors, status: :unprocessable_entity }
+        # end
+      # end
+    # end
+#     
+  # end
   
   # GET /bids
   # GET /bids.json
