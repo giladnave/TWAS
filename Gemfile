@@ -12,6 +12,7 @@ gem "devise", "~> 2.0.2"
 gem "nifty-generators", :group => :development
 
 gem 'hirb'
+gem 'haml'
 
 # Gems used only for assets and not required
 # in production environments by default.

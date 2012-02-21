@@ -8,7 +8,7 @@ TWAS::Application.routes.draw do
     end
   end
 
-  #resources :joinerships
+  resources :users, :only => [:show, :index]
 
   get "home/index"
   

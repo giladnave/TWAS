@@ -1,0 +1,6 @@
+%h1 User List
+
+%ul
+  - @users.each do |u|
+    %li
+      = render 'user', :user => u
