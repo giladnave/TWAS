@@ -3,4 +3,5 @@ class Bid < ActiveRecord::Base
   
   has_many :joinerships, :dependent => :destroy
   has_many :joiners, :through => :joinerships
+
 end

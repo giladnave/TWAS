@@ -1,14 +1,15 @@
 TWAS::Application.routes.draw do
   devise_for :users
 
-  resources :bids  #do
-    # member do
-      # get 'join'
-    # end
-  # end
+  resources :bids do
+    member do
+      get 'join' => 'joinerships#create'
+      get 'leave' => 'joinerships#destroy'
+    end
+  end
 
-  resources :joinerships
-  
+  #resources :joinerships
+
   get "home/index"
   
   
