@@ -23,8 +23,7 @@
     <td><%= bid.valid_until %></td>
     <td><%= bid.user.email %></td>
     <%#= link_to 'Join', join_bid_path(bid) %></td>
-    <td><%= link_to 'Join', joinerships_path(:bid_id => bid), :method => :post %>
-    
+    <td><%= link_to 'Join', join_bid_path(bid) %>
     <td><%= link_to 'Show', bid %></td>
     <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
     <td><%= link_to 'Destroy', bid, confirm: 'Are you sure?', method: :delete %></td>

@@ -1,0 +1,17 @@
+%h1 User 
+
+%p
+  = @user.id
+%p
+  = @user.email
+
+%h2
+  Bids user is owner of
+%p
+  = bid_list_for @user
+
+%h2
+  Bids user has joined
+%p
+  = bids_joined @user
+
