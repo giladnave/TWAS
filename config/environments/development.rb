@@ -30,7 +30,7 @@ TWAS::Application.configure do
   
   # config.action_mailer.default_url_options = { :host => 'localhost:3000' }
       
-   # ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.delivery_method = :letter_opener
    # ActionMailer::Base.perform_deliveries = true
    # ActionMailer::Base.raise_delivery_errors = true
 #      
