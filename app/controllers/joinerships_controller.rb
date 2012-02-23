@@ -5,7 +5,11 @@ class JoinershipsController < ApplicationController
     @bid = Bid.find(params[:id])
 
     js = @bid.joinerships.create(:joiner_id => current_user.id)
-    result = js.errors[:base].first || 'Success'
+    result = js.errors[:base].first || 'You joined the bid successfuly !'
+    
+    if js.errors[:base].empty?
+      StatusMailer.joiner_notification(@bid).deliver
+    end
 
     respond_to do |format|
       format.html { redirect_to bid_path(@bid), notice: result }

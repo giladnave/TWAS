@@ -1,9 +1,15 @@
-%h1 User 
+%h1 User info
 
 %p
-  = @user.id
+  %strong
+    User id
+  %regular
+    = @user.id
 %p
-  = @user.email
+  %strong
+    User email
+  %regular  
+    = @user.email
 
 %h2
   Bids user is owner of

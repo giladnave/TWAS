@@ -9,7 +9,9 @@ class Joinership < ActiveRecord::Base
   validate :not_joiner
 
   def not_owner
-    if self.bid_id and self.joiner_id and self.bid.user.id == self.joiner_id
+    return unless self.bid_id and self.joiner_id
+    
+    if self.bid.user.id == self.joiner_id
       self.errors[:base] << 'You can not join your own Bid !'
     end
   end
