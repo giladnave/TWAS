@@ -1,36 +1,41 @@
-<h1>Listing bids</h1>
+<div class='row'>
+  <span class='span12'>
+    <h3>Listing bids</h3>
+    <p>List of active bids in system</p>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Joiners required</th>
-    <th>Joiners count</th>
-    <th>Valid until</th>
-    <th>Bid owner</th>
-    <th>Join Link</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <table class='table table-striped'>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Joiners required</th>
+        <th>Joiners count</th>
+        <th>Valid until</th>
+        <th>Bid owner</th>
+        <th>Join Link</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<% @bids.each do |bid| %>
-  <tr>
-    <td><%= bid.title %></td>
-    <td><%= bid.content %></td>
-    <td><%= bid.join_num %></td>
-    <td><%= bid.joinerships.count %></td>
-    <td><%= bid.valid_until %></td>
-    <td><%= bid.user.email %></td>
-    <%#= link_to 'Join', join_bid_path(bid) %></td>
-    <td><%= link_to 'Join', join_bid_path(bid) %>
-    <td><%= link_to 'Show', bid %></td>
-    <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
-    <td><%= link_to 'Destroy', bid, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+      <% @bids.each do |bid| %>
+        <tr>
+          <td><%= bid.title %></td>
+          <td><%= bid.content %></td>
+          <td><%= bid.join_num %></td>
+          <td><%= bid.joinerships.count %></td>
+          <td><%= bid.valid_until %></td>
+          <td><%= bid.user.email %></td>
+          <%#= link_to 'Join', join_bid_path(bid) %></td>
+        <td><%= link_to 'Join', join_bid_path(bid) %>
+          <td><%= link_to 'Show', bid %></td>
+          <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
+          <td><%= link_to 'Destroy', bid, confirm: 'Are you sure?', method: :delete %></td>
+        </tr>
+      <% end %>
+    </table>
 
-<br />
+    <br />
 
-<%= link_to 'New Bid', new_bid_path %>
+    <%= link_to 'New Bid', new_bid_path, :class => 'btn btn-primary' %>
+  </span>
+</div>

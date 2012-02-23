@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>TWAS</title>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div id="user_nav">
-    <% if user_signed_in? %>
-        Signed in as <%= current_user.email %>.
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-    <% else %>
-        <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
-    <% end %>
-  </div>
-  
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>TWAS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<%= yield %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+    <%= render 'shared/header' %>
+
+    <div class="container">
+      <%= yield %>
+
+      <hr>
+      <footer>
+        <p>© Company 2012</p>
+      </footer>
+    </div>
+  </body>
 </html>
