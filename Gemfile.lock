@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/collectiveidea/delayed_job.git
+  revision: 360618adad06720d696c32ff4ff87efaba282c5e
+  specs:
+    delayed_job (3.0.1)
+      activesupport (~> 3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -40,6 +47,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
+    delayed_job_active_record (0.3.2)
+      activerecord (> 2.1.0)
+      delayed_job (~> 3.0.0)
     devise (2.0.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -128,6 +138,8 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.1)
+  delayed_job!
+  delayed_job_active_record
   devise (~> 2.0.2)
   haml
   hirb

@@ -14,6 +14,10 @@ gem "nifty-generators", :group => :development
 gem 'hirb'
 gem 'haml'
 
+#gem "delayed_job", '2.1.2'
+gem "delayed_job",  :git => 'git://github.com/collectiveidea/delayed_job.git'
+gem "delayed_job_active_record"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
