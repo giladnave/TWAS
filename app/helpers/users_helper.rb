@@ -4,7 +4,6 @@ module UsersHelper
   end
 
   def bids_joined(user)
-    # TODO: Make @user.joined
-    render 'bids/list', :bids => Bid.joins(:joiners).joins(:user).where('users.id = ?', user.id)
+    render 'bids/list', :bids => @user.joined
   end
 end
