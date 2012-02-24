@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120223144518) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "join_count",  :default => 0, :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
